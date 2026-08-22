@@ -1,5 +1,7 @@
 package com.myshopping.orders_service.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,20 @@ public class OrdersServiceImpl implements OrdersService{
 			logger.info("Order creation failed. Please try again.");
 			return "Order creation failed. Please try again.";
 		}
+	}
+
+	@Override
+	public List<OrdersInfoDTO> searchOrders(String paidBy) {
+		logger.info("Initialized searchOrders execution for paidBy user : {}",paidBy);
+		
+		List<OrdersInfo> listOfOrdersInfos = ordersInfoRespository.searchOrdersPaidByUser(paidBy);
+		
+		logger.info("Searched list of orders for paid by user : listOfOrdersInfos : {}",listOfOrdersInfos);
+		
+		List<OrdersInfoDTO> listOfOrdersInfoDTOs = ordersMapper.toListOfOrdersInfoDTOs(listOfOrdersInfos);
+		logger.info("converted from listOfOrdersInfos to listOfOrdersInfoDTOs : listOfOrdersInfoDTOs {}",listOfOrdersInfoDTOs);
+		
+		return listOfOrdersInfoDTOs;
 	}
 	
 }

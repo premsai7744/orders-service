@@ -1,5 +1,7 @@
 package com.myshopping.orders_service.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +46,43 @@ public class OrdersController {
 	}
 	
 	
+	@GetMapping("/search/orders/{paidBy}")
+	private ResponseEntity<List<OrdersInfoDTO>> searchOrders(@PathVariable String paidBy){
+		logger.info("Search orders request received by controller for paidBy user : {}",paidBy);
+		
+		List<OrdersInfoDTO> listOfOrdersInfoDTOs = ordersService.searchOrders(paidBy);
+		if(listOfOrdersInfoDTOs.isEmpty()) {
+			return ResponseEntity
+					.status(HttpStatus.NO_CONTENT)
+					.body(null);
+		} else {
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(listOfOrdersInfoDTOs);
+		}
 }
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,7 @@
 package com.myshopping.orders_service.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -17,4 +19,6 @@ public interface OrdersMapper {
 	
 	@Mapping(target = "orderId", ignore=true)
 	void toUpdateOrdersInfoEntity(OrdersInfoDTO ordersInfoDTO,@MappingTarget OrdersInfo ordersInfo);
+	
+	List<OrdersInfoDTO> toListOfOrdersInfoDTOs(List<OrdersInfo> listOfOrdersInfos);
 }
