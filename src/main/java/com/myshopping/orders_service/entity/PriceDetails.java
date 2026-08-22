@@ -25,16 +25,16 @@ public class PriceDetails {
 	private UUID priceDetailsId;
 	
 	@Column(name="listing_price")
-	private double listingPrice;
+	private Double listingPrice;
 	
 	@Column(name="special_price")
-	private double specialPrice;
+	private Double specialPrice;
 	
 	@Column(name="total_fees")
-	private double totalFees;
+	private Double totalFees;
 	
 	@Column(name="total_amount")
-	private double totalAmount;
+	private Double totalAmount;
 	
 	@Column(name="paid_by")
 	private String paidBy;

@@ -32,7 +32,7 @@ public class OrdersInfo {
 	private String orderProductName; 
 	
 	@Column(name = "ordr_price")
-	private double orderPrice; 
+	private Double orderPrice; 
 	
 	@Column(name = "ordr_confirmed_date")
 	private LocalDateTime orderConfirmedDate; 
