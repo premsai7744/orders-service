@@ -8,6 +8,8 @@ import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -20,6 +22,7 @@ import lombok.Data;
 @Table(name="my_shopping_orders")
 public class OrdersInfo {
 	
+	@GeneratedValue(strategy=GenerationType.UUID)
 	@JdbcTypeCode(SqlTypes.VARCHAR)
 	@Id
 	@Column(name = "ordr_id")

@@ -7,6 +7,8 @@ import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -16,6 +18,7 @@ import lombok.Data;
 @Table(name="my_shopping_price_details")
 public class PriceDetails {
 	
+	@GeneratedValue(strategy=GenerationType.UUID)
 	@JdbcTypeCode(SqlTypes.VARCHAR)
 	@Id
 	@Column(name="price_details_id")
