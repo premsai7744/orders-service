@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ import jakarta.validation.Valid;
 public class OrdersController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrdersController.class);
+	
+	@Value("${property.file.name}")
+	private String propertyFileName = null;
 	
 	@Autowired
 	OrdersService ordersService;
@@ -48,6 +52,8 @@ public class OrdersController {
 	
 	@GetMapping("/search/orders/{paidBy}")
 	private ResponseEntity<List<OrdersInfoDTO>> searchOrders(@PathVariable String paidBy){
+		logger.info("Property file name : {}",propertyFileName);
+		
 		logger.info("Search orders request received by controller for paidBy user : {}",paidBy);
 		
 		List<OrdersInfoDTO> listOfOrdersInfoDTOs = ordersService.searchOrders(paidBy);
